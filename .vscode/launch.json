@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "TS Debug",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "--nolazy", "-r", "ts-node/register"
+      ],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+      "outputCapture": "std"
+    },
+    {
+      "name": "Test Debug",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "-i", "--runInBand", "ts-node/register", "${relativeFile}"
+      ],
+      "runtimeArgs": [
+        "--nolazy", "ts-node/register"
+      ],
+      "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest",
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector"
+    }  
+  ]
+}
