@@ -1,9 +1,9 @@
-import QuickFindUF from './quick-find-uf'
+import QuickFind from './quick-find-uf'
 
-describe('A Quick Find algorithm', () => {
-  let qf: QuickFindUF
+xdescribe('A Quick Find algorithm', () => {
+  let qf: QuickFind
 
-  beforeEach( () => qf = new QuickFindUF(10) )
+  beforeEach( () => qf = new QuickFind(10) )
 
   describe('initiailizes', () => {
     it('with an array sized to the argument', () => {

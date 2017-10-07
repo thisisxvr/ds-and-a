@@ -1,4 +1,4 @@
-class QuickFindUF {
+export default class QuickFind {
   private _id: number[]
 
   get id(): number[] { return this._id }
@@ -28,5 +28,3 @@ class QuickFindUF {
     }
   }
 }
-
-export default QuickFindUF
