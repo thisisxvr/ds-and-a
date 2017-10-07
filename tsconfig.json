@@ -13,7 +13,8 @@
     "noImplicitReturns": true,
     "sourceMap": true,
     "noEmitOnError": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
   "exclude": [
