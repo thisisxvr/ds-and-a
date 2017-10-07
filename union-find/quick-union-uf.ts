@@ -15,7 +15,7 @@ export default class QuickUnion {
   union(p: number, q: number): void {
     const pRoot = this.root(p)
     const qRoot = this.root(q)
-    this.id[pRoot] = qRoot
+    this._id[pRoot] = qRoot
   }
 
   // Check if p and q have same root (depth of p and q array accesses)
