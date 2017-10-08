@@ -1,9 +1,10 @@
 # Data Structures + Algorithms
 
+>"*Great algorithms are the poetry of computation*" \- Francis Sullivan
 
-# Algorithms
+## Algorithms
 1. Union-Find
 
 
-# License
+## License
 MIT

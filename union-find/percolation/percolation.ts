@@ -1,9 +1,11 @@
-import * as UnionFind from '../weighted-quick-union-path-compressed'
+import UnionFind from '../weighted-quick-union-path-compressed'
 
 export default class Percolation {
 
-  private _grid: number[]
+  private _connectivity: UnionFind
+  private _grid: number[][]
   get grid() { return this._grid }
+  get connectivity() { return this._connectivity }
 
   // Creates an n-by-n grid, with all sites blocked
   constructor(n: number) {}
