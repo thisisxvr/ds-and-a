@@ -1,6 +1,6 @@
 export default class WeightedQuickUnionPathCompressed {
   private _id: number[]
-  private _sz: number[]
+  private _sz: number[] // Maintains a count of the number of objects rooted in a tree
 
   get id() { return this._id }
   get sz() { return this._sz }

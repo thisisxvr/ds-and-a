@@ -1,4 +1,4 @@
-import Percolation from './percolation'
+import { Percolation, ISite } from './percolation'
 
 describe('A percolation system', () => {
   let system: Percolation
@@ -6,7 +6,7 @@ describe('A percolation system', () => {
 
   describe('initializes...', () => {
     it('with a square grid', () => {
-      function isSquare(grid: number[][]): boolean {
+      function isSquare(grid: ISite[][]): boolean {
         const gridHeight = grid.length
         for (let i = 0; i < gridHeight; i++) {
           if (grid[i].length !== gridHeight) { return false }
@@ -18,23 +18,22 @@ describe('A percolation system', () => {
     })
 
     it('with a grid whose elements are named from 0 to (N^2)-1', () => {
-      expect(system.grid).toEqual([[0, 1, 2, 3, 4],
-      [5, 6, 7, 8, 9],
-      [10, 11, 12, 13, 14],
-      [15, 16, 17, 18, 19],
-      [20, 21, 22, 23, 24]])
+      expect(system.grid).toEqual([[{index: 0, isOpen: false}, {index: 1, isOpen: false}, {index: 2, isOpen: false}, {index: 3, isOpen: false}, {index: 4, isOpen: false}], [{index: 5, isOpen: false}, {index: 6, isOpen: false}, {index: 7, isOpen: false}, {index: 8, isOpen: false}, {index: 9, isOpen: false}], [{index: 10, isOpen: false}, {index: 11, isOpen: false}, {index: 12, isOpen: false}, {index: 13, isOpen: false}, {index: 14, isOpen: false}], [{index: 15, isOpen: false}, {index: 16, isOpen: false}, {index: 17, isOpen: false}, {index: 18, isOpen: false}, {index: 19, isOpen: false}], [{index: 20, isOpen: false}, {index: 21, isOpen: false}, {index: 22, isOpen: false}, {index: 23, isOpen: false}, {index: 24, isOpen: false}]])
     })
 
-    it('with a Quick Union algorithm that has no connections', () => {
-      expect(system.sites.id).toBe([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24])
+    it('with a Quick Union algorithm that has a top row connected to a virtual top site, and a bottom row connected to a virtual bottom site', () => {
+      expect(system.sites.id).toEqual([26, 26, 26, 26, 26, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 25, 25, 25, 25, 25, 25, 26])
     })
 
-    it('with a Quick Union algorithm that has no trees', () => {
-      expect(system.sites.sz).toBe([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+    it('with a Quick Union algorithm that has 2 trees at two virtual sites', () => {
+      expect(system.sites.sz).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 6, 6])
     })
   })
 
   describe('can tell site vacancy for...', () => {
+    let system: Percolation
+    beforeEach(() => { system = new Percolation(5) })
+
     it('a 5 by 5 grid that is fully blocked', () => {
       const gridDimension = system.grid.length
       for (let i = 1; i <= gridDimension; i++) {
@@ -60,8 +59,8 @@ describe('A percolation system', () => {
       expect(system.isOpen(3, 2)).toBe(true)
       expect(system.isOpen(3, 4)).toBe(true)
       expect(system.isOpen(3, 5)).toBe(true)
-      expect(system.isOpen(0, 2)).toBe(false)
-      expect(system.isOpen(0, 4)).toBe(false)
+      expect(system.isOpen(1, 3)).toBe(false)
+      expect(system.isOpen(1, 5)).toBe(false)
     })
 
     it('a 5 by 5 grid that is fully open', () => {
@@ -146,12 +145,12 @@ describe('A percolation system', () => {
     })
 
     it('in a system that does not percolate', () => {
-      expect(system.percolates).toBe(false)
+      expect(system.percolates()).toBe(false)
     })
 
     it('and in one that does', () => {
       system.open(4, 4)
-      expect(system.percolates).toBe(true)
+      expect(system.percolates()).toBe(true)
     })
   })
 })
