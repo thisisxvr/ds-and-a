@@ -1,8 +1,13 @@
 import { Percolation, ISite } from './percolation'
 
-describe('A percolation system', () => {
+describe('A Percolation system', () => {
   let system: Percolation
   beforeEach(() => { system = new Percolation(5) })
+
+  it('throws an error for an invalid initializer', () => {
+    const initError = () => { system = new Percolation(-1) }
+    expect(initError).toThrow(RangeError)
+  })
 
   describe('initializes...', () => {
     it('with a square grid', () => {
