@@ -41,13 +41,12 @@ export class Percolation {
 
     // Connect virtual top site to the top row and virtual bottom site to bottom row
     const topRow = this._grid[0]
-    const btmRow = this._grid[this._gridSize - 1]
-
-    for (let i = 0, len = topRow.length; i < len; i++) {
+    for (let i = 0; i < n; i++) {
       this._sites.union(this._virtualTop, topRow[i].index)
     }
 
-    for (let i = 0, len = btmRow.length; i < len; i++) {
+    const btmRow = this._grid[n - 1]
+    for (let i = 0; i < n; i++) {
       this._sites.union(this._virtualBtm, btmRow[i].index)
     }
 
@@ -100,7 +99,7 @@ export class Percolation {
   }
 
   // Connect a site to it's open neighbours
-  private async meetTheNeighbours(row: number, column: number): Promise<void> {
+  private meetTheNeighbours(row: number, column: number): void {
     const siteRow = row - 1
     const siteColumn = column - 1
     const site = this._grid[siteRow][siteColumn]

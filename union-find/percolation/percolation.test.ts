@@ -1,6 +1,6 @@
 import { Percolation, ISite } from './percolation'
 
-describe('A Percolation system', () => {
+xdescribe('A Percolation system', () => {
   let system: Percolation
   beforeEach(() => { system = new Percolation(5) })
 

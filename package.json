@@ -19,7 +19,8 @@
   "scripts": {
     "test": "tsc --noEmit -p . && jest --no-cache --verbose",
     "lint": "tslint -p . --type-check -t verbose",
-    "lintci": "tslint -p . --type-check -t verbose"
+    "lintci": "tslint -p . --type-check -t verbose",
+    "ts run": "ts-node ${file}"
   },
   "dependencies": {
     "@types/jest": "^20.0.0",
