@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Percolation Visualizer</title>
+</head>
+<style>
+  body, html {
+    height: 100%;
+    display: grid;
+  }
+  #cnvs { margin: auto; }
+</style>
+<!-- <script type="module" src="percolation/percolation-visualizer.js"></script> -->
+<body onload="">
+  <canvas id="cnvs" width="500" height="500"></canvas>
+  <script type="text/javascript">
+    const options = {
+      fillColor: "#67c6f3",
+      openColor: '#FFFFFF',
+      strokeColor: '#000000'
+    }
+
+    const cnvs = document.getElementById('cnvs')
+    const ctx = cnvs.getContext('2d')
+    ctx.fillRect(0, 0, cnvs.width, cnvs.width) // bg
+    ctx.fillStyle = options.fillColor
+    ctx.strokeStyle = options.strokeColor
+    const gridSize = 60
+
+    const siteSize = cnvs.width / gridSize
+
+    for (let i = 0; i < gridSize; i++) {
+      for (let j = 0; j < gridSize; j++) {
+        const x = i * siteSize
+        const y = j * siteSize
+        ctx.fillRect(x, y, siteSize, siteSize)
+        ctx.strokeRect(x, y, siteSize, siteSize)
+      }
+    }
+  </script>
+</body>
+</html>

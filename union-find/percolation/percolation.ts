@@ -98,6 +98,7 @@ export class Percolation {
     return this._sites.connected(this._virtualTop, this._virtualBtm)
   }
 
+  // TODO: make async
   // Connect a site to it's open neighbours
   private meetTheNeighbours(row: number, column: number): void {
     const siteRow = row - 1

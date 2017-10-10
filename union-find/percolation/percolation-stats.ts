@@ -11,7 +11,7 @@ export default class PercolationStats {
     if (gridSize < 1 || trials < 1) { throw new RangeError() }
 
     this._gridSize = gridSize
-    this._trials = trials
+    this._trials   = trials
   }
 
   // Sample mean of percolation threshold
@@ -47,6 +47,7 @@ export default class PercolationStats {
     return x̅ + ((1.96 * s) / Math.sqrt(this._trials))
   }
 
+  // Begin Monte Carlo simulation
   init(): void {
     let system: Percolation
     this._openSites = []
@@ -57,14 +58,14 @@ export default class PercolationStats {
       system = new Percolation(this._gridSize)
       while (!system.percolates()) {
         // ...and open sites at random until system percolates
-        const row = this.getRandomIndex()
+        const row    = this.getRandomIndex()
         const column = this.getRandomIndex()
         system.open(row, column)
       }
-      // Then log the number of open sites in system
+      // Log the number of open sites in system
       this._openSites.push(system.numberOfOpenSites())
     }
-    // After all trials, calculate stats and print them
+    // Calculate stats after trials are done
     this.debug(`mean                    = ${this.mean()}`)
     this.debug(`stddev                  = ${this.stddev()}`)
     this.debug(`95% confidence interval = [${this.confidenceLo()}, ${this.confidenceHi()}]`)

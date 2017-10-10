@@ -1,6 +1,6 @@
 import { Percolation, ISite } from './percolation'
 
-xdescribe('A Percolation system', () => {
+describe('A Percolation system', () => {
   let system: Percolation
   beforeEach(() => { system = new Percolation(5) })
 
@@ -104,6 +104,7 @@ xdescribe('A Percolation system', () => {
 
   describe('returns the number of open sites...', () => {
     let system: Percolation
+
     beforeEach(() => {
       system = new Percolation(5)
       system.open(1, 1)
@@ -115,7 +116,13 @@ xdescribe('A Percolation system', () => {
       system.open(3, 5)
     })
 
-    it('for a small grid', () => {
+    it('for a fully blocked grid', () => {
+      const system = new Percolation(20)
+
+      expect(system.numberOfOpenSites()).toBe(0)
+    })
+
+    it('for a partially open grid', () => {
       expect(system.numberOfOpenSites()).toBe(7)
     })
 
