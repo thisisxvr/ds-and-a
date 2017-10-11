@@ -11,35 +11,108 @@
     height: 100%;
     display: grid;
   }
-  #cnvs { margin: auto; }
+  #inpts, #cnvs { margin: auto; }
 </style>
-<!-- <script type="module" src="percolation/percolation-visualizer.js"></script> -->
 <body onload="">
+  <select name="inputs-dropdown" id="inpts"></select>
   <canvas id="cnvs" width="500" height="500"></canvas>
   <script type="text/javascript">
     const options = {
-      fillColor: "#67c6f3",
+      fullColor: "#67c6f3",
       openColor: '#FFFFFF',
       strokeColor: '#000000'
     }
 
+    // Get file list and add to drop down
+    // On select, run perc on backend
+    // Get grid size
+    // For each site: get site info (open / full / closed), draw
+    // Wait 100ms
+    // Loop
+    const inpts = document.getElementById('inpts')
     const cnvs = document.getElementById('cnvs')
     const ctx = cnvs.getContext('2d')
+    ctx.fillStyle = options.strokeColor
     ctx.fillRect(0, 0, cnvs.width, cnvs.width) // bg
-    ctx.fillStyle = options.fillColor
-    ctx.strokeStyle = options.strokeColor
-    const gridSize = 60
+    // ctx.strokeStyle = options.strokeColor
+    // const gridSize = 20
+    let data = []
+    let gridSize
+    let siteSize
 
-    const siteSize = cnvs.width / gridSize
+    const head = new Headers()
+    // const siteSize = cnvs.width / gridSize
+    fetch('/getinputs')
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        const defaultOption = document.createElement('option')
+        defaultOption.textContent = 'Select a simulation'
+        inpts.appendChild(defaultOption)
 
-    for (let i = 0; i < gridSize; i++) {
-      for (let j = 0; j < gridSize; j++) {
-        const x = i * siteSize
-        const y = j * siteSize
-        ctx.fillRect(x, y, siteSize, siteSize)
-        ctx.strokeRect(x, y, siteSize, siteSize)
+        for (let i = 1; i <= data.length; i++) { 
+          const option = document.createElement('option')
+          option.value = data[i]
+          option.textContent = data[i]
+          inpts.appendChild(option)
+        }
+      })
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('select[name="inputs-dropdown"]').onchange=getGridData
+    }, false)
+
+    function getGridData(event) {
+      if(!event.target.value) alert('Select a simulation')
+      else fetch(`/getgriddata?input=${event.target.value}`)
+            .then((response) => {
+              return response.json()
+            })
+            .then((resData) => {
+              data = resData
+              gridSize = data[0][0]
+              siteSize = cnvs.width / gridSize
+              // for (let index = 0; index < data.length; index++) {
+              //   console.log(data[index][0], data[index][1])
+              // }
+              resData.shift()
+              visualize(resData)
+            })
+    }
+
+    let row, column, systemPercolates
+    async function visualize(resData) {
+      // For each of the input lines
+      do {
+      for (const inputLine of resData) {
+        // let inputLine = data[i]
+        let [ row, column ] = inputLine
+        await fetch(`/opensite?row=${row}&column=${column}`)
+          .then((response) => { return response.ok })
+        await fetch(`/percolates`)
+              .then((response) => { systemPercolates = Boolean(response.text()) })
+        setTimeout(draw(), 100)
+      }
+      } while (!systemPercolates)
+    }
+
+    function draw() {
+      for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+          const isFull = Boolean(fetch(`/isfull?row=${i + 1}&column=${j + 1}`).then((response) => { return response.text() }).then((text) => { return text }))
+          const x = i * siteSize
+          const y = j * siteSize
+          if (i == row && j == column && isFull) { ctx.fillStyle = options.fullColor } // Blue for full site
+          else if (i == row && j == column) { ctx.fillStyle = options.openColor } // White for open site
+          else { ctx.fillStyle = options.strokeColor } // Black for a blocked site
+          ctx.fillRect(x, y, siteSize, siteSize)
+          ctx.strokeRect(x, y, siteSize, siteSize)
+          // window.requestAnimationFrame(visualize)
+        }
       }
     }
+
   </script>
 </body>
 </html>
