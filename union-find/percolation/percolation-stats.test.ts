@@ -1,7 +1,7 @@
 import PercolationStats from './percolation-stats'
 // import debug from 'debug'
 
-describe('Percolation stats for:', () => {
+xdescribe('Percolation stats for:', () => {
   let stats: PercolationStats
 
   // beforeEach(() => { stat = new PercolationStats() })

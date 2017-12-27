@@ -1,12 +1,11 @@
-import PercolationVisualizer from './percolation-visualizer'
+// import PercolationVisualizer from './percolation-visualizer'
 
 xdescribe('A Percolation can be visualized...', () => {
-  let vis: PercolationVisualizer
+  // let vis: PercolationVisualizer
 
-  beforeEach(() => { vis = new PercolationVisualizer() })
+  // beforeEach(() => { vis = new PercolationVisualizer() })
 
-  it('draws', () => {
-    vis.draw()
+  xit('draws', () => {
+    // vis.draw()
   })
-
 })
