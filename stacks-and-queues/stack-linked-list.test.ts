@@ -1,6 +1,6 @@
 import StackLinkedList from './stack-linked-list'
 
-describe('A Linked List implementation of a Stack', () => {
+xdescribe('A Linked List implementation of a Stack', () => {
   let stack: StackLinkedList<number>
 
   it('should work with any data type', () => {
