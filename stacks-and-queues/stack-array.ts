@@ -18,7 +18,6 @@ export default class StackArray<T> {
   pop(): T {
     if (this.isEmpty()) { throw new RangeError("Stack empty") }
     const item = this.data[--this.pointer]
-    // tslint:disable-next-line:no-null-keyword
     this.data[this.pointer] = null!
      // Halve the array size when one-quarter full.
     if (this.pointer > 0 && this.pointer === Math.floor(this.data.length / 4)) { this.resize(this.data.length / 2) }

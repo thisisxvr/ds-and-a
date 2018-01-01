@@ -24,7 +24,7 @@ Solutions:
 
 Performance: Amortized time is constant. Worst case proportional to N.
 
-### Linked List vs Resizing Array
+#### Linked List vs. Resizing Array
 Linked list implementation:
 - Every operation takes constant time in the *worst case*.
 - Uses extra time and space to deal with the links.
@@ -32,3 +32,8 @@ Linked list implementation:
 Resizing array implementation:
 - Every operation takes constant *amortized* time.
 - Less wasted space.
+
+## Queues
+Same as stack, only differs in terminology and semantics:
+- `enqueue` for insertion, `dequeue` for removal.
+- `dequeue` returns the item least recently added (like waiting in line at a ticket counter).
