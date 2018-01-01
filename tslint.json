@@ -109,7 +109,6 @@
         "no-empty": true,
         "no-invalid-this": [true, "check-function-in-method"],
         "no-misused-new": true,
-        "no-null-keyword": true,
         "no-string-literal": true,
         "radix": true,
         "typeof-compare": true,
