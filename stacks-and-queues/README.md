@@ -66,3 +66,5 @@ Collection of items, allows for iterating. But does not care for order.
 - Java virtual machine.
 - Undo in a word processor.
 - Back button in a Web browser... and more.
+
+### Assignment: [Deques and Randomized Queues](deques-and-randomized-queues/)

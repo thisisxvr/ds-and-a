@@ -7,10 +7,9 @@ This repo contains TypeScript implementations of the Algorithms and Data Structu
 
 Currently a Work-in-Progress.
 
-
 ## Contents
-- [Union-Find](union-find/)
-- [Stacks and Queues](stacks-and-queues/)
+- [Union-Find](union-find/): Quick-find, quick-union, weighted quick-union, and weighted quick-union with path compression.
+- [Stacks and Queues](stacks-and-queues/): Stacks (linked list + array), queues (linked list + array), deques, and randomized queues.
 
 ## License
 MIT
