@@ -16,30 +16,32 @@ describe('An Array implementation of a Queue should', () => {
   })
 
   it('accept multiple items in succession', () => {
-    queue = new QueueArray<number>(3)
+    queue = new QueueArray<number>()
     queue.enqueue(9)
     queue.enqueue(8)
     queue.enqueue(7)
+    queue.enqueue(6)
   })
 
   it('double its data structure when full', () => {
-    expect(queue.data.length).toBe(3)
-    queue.enqueue(6)
-    expect(queue.data.length).toBe(6)
-  })
-
-  it('halve the array size when a quarter full', () => {
-    expect(queue.dequeue()).toBe(9)
-    expect(queue.data.length).toBe(3)
+    expect(queue.data.length).toBe(4)
+    queue.enqueue(5)
+    expect(queue.data.length).toBe(8)
   })
 
   it('dequeue items in FIFO order', () => {
+    expect(queue.dequeue()).toBe(9)
     expect(queue.dequeue()).toBe(8)
     expect(queue.dequeue()).toBe(7)
-    expect(queue.dequeue()).toBe(6)
+  })
+
+  it('halve the array size when a quarter full', () => {
+    expect(queue.data.length).toBe(4)
   })
 
   it('throw an error when empty and dequeued', () => {
+    expect(queue.dequeue()).toBe(6)
+    expect(queue.dequeue()).toBe(5)
     const error = () => { queue.dequeue() }
     expect(error).toThrow(RangeError)
   })

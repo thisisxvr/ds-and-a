@@ -37,3 +37,32 @@ Resizing array implementation:
 Same as stack, only differs in terminology and semantics:
 - `enqueue` for insertion, `dequeue` for removal.
 - `dequeue` returns the item least recently added (like waiting in line at a ticket counter).
+
+#### Linked list implemenation
+- Maintain pointers to first and last nodes.
+- Insertion and removal happen at opposite ends.
+
+#### Array implementation
+- Grow the array when tail exceeds capacity.
+- Shrink the array when head hits 1/4 capacity.
+- Update head and tail when resizing.
+
+## Bags
+Collection of items, allows for iterating. But does not care for order.
+- Implementation: Stack (without pop) or queue (without dequeue).
+  - `add(Item x)`: insert a new item onto bag.
+  - `int size()`: number of items in bag.
+  - `Iterable<Item> iterator()`: iterator for all items in bag.
+
+## Applications
+- Many languages come with these data structures in a library / natively.
+- So why implement ourselves?
+  - Bloated and poorly designed API (design-by-committee phenomenon).
+  - Best practice to use our own implementation.
+  - Don't use a library until you understand its API!
+
+#### Stack applications
+- Parsing in a compiler.
+- Java virtual machine.
+- Undo in a word processor.
+- Back button in a Web browser... and more.

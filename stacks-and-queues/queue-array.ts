@@ -4,9 +4,9 @@ export default class QueueArray<T> {
   private _data: T[]
   get data() { return this._data }
 
-  constructor(size = 1) {
+  constructor() {
     this.head = 0, this.tail = 0
-    this._data = new Array<T>(size)
+    this._data = new Array<T>(2)
   }
 
   isEmpty(): boolean { return this.head === this.tail }
@@ -21,7 +21,7 @@ export default class QueueArray<T> {
     const item = this.data[this.head]
     this.data[this.head++] = undefined!
     // Halve the array size when one-quarter full.
-    if (this.head > 0 && this.head === Math.floor(this.data.length / 4)) { this.resize(this.data.length / 2) }
+    if ((this.data.length / (this.tail - this.head) % 4) === 0) { this.resize(this.data.length / 2) }
     return item
   }
 
