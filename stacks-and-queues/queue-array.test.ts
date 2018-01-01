@@ -1,6 +1,6 @@
 import QueueArray from './queue-array'
 
-describe('An Array implementation of a Queue should', () => {
+xdescribe('An Array implementation of a Queue should', () => {
   let queue: QueueArray<number>
 
   it('work with any data type', () => {

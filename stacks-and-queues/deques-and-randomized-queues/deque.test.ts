@@ -1,6 +1,6 @@
 import Deque from './deque'
 
-describe('A Deque should', () => {
+xdescribe('A Deque should', () => {
   let deque: Deque<string>
 
   it('work with any data type', () => {
@@ -54,14 +54,14 @@ describe('A Deque should', () => {
     expect(deque.size()).toBe(0)
   })
 
-  it('throws when passed a null argument', () => {
+  it('throw when passed a null argument', () => {
     const addFirstError = () => { deque.addFirst(null!) }
     expect(addFirstError).toThrow(TypeError)
     const addLastError = () => { deque.addLast(null!) }
     expect(addLastError).toThrow(TypeError)
   })
 
-  it('throws when a remove is attempted on an empty deque', () => {
+  it('throw when a remove is attempted on an empty deque', () => {
     const removeFirstError = () => { deque.removeFirst() }
     expect(removeFirstError).toThrow('Deque is empty.')
     const removeLastError = () => { deque.removeLast() }
