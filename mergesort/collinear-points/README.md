@@ -7,7 +7,7 @@ Computer vision involves analyzing patterns in visual images and reconstructing 
 ## The problem
 Given a set of *n* distinct points in the plane, find every (maximal) line segment that connects a subset of 4 or more of the points.
 
-![](./img/lines2.png)
+<img alt="" src="./img/lines2.png">
 
 ## Point data type
 Create an immutable data type `Point` that represents a point in the plane by implementing the following API:
@@ -74,7 +74,7 @@ A faster, sorting-based solution. Remarkably, it is possible to solve the proble
 
 Applying this method for each of the *n* points in turn yields an efficient algorithm to the problem. The algorithm solves the problem because points that have equal slopes with respect to *p* are collinear, and sorting brings such points together. The algorithm is fast because the bottleneck operation is sorting.
 
-![](./img/lines1.png)
+<img width="400" alt="" src="./img/lines1.png">
 
 Write a program `FastCollinearPoints.java` that implements this algorithm.
 
