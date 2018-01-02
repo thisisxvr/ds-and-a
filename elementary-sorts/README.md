@@ -32,7 +32,7 @@ Implement `compareTo()` so that `v.compareTo(w)`:
   - No entry to right of ↑ is smaller than any entry to the left of ↑.
 
 ### Performance
-- Uses ~*N*^2/2 compares and *N* exchanges.
+- Uses ~*N*<sup>2</sup>/2 compares and *N* exchanges.
 - Runtime insensitive to input. Quadratic time, even if input is sorted.
 - Data movement is minimal. Every item is placed in it's final position with one exchange.
 
@@ -44,9 +44,9 @@ Implement `compareTo()` so that `v.compareTo(w)`:
   - Entries to the right of ↑ have not yet been seen.
 
 ### Performance
-- To sort a randomly-ordered array with distinct keys, insertion sort uses ~ ¼ *N*^2^ compares and ~ ¼ *N*^2^ exchanges on average: Expect each entry to move halfway back.
+- To sort a randomly-ordered array with distinct keys, insertion sort uses ~ ¼ *N*<sup>2</sup> compares and ~ ¼ *N*<sup>2</sup> exchanges on average: Expect each entry to move halfway back.
 - **Best case**: If the array is in ascending order, insertion sort makes *N-1* compares and 0 exchanges.
-- **Worst case**: If the array is in descending order (and no duplicates), insertion sort makes ~ ½ *N*^2^ compares and ~ ½ *N*^2^ exchanges.
+- **Worst case**: If the array is in descending order (and no duplicates), insertion sort makes ~ ½ *N*<sup>2</sup> compares and ~ ½ *N*<sup>2</sup> exchanges.
 - For partially-sorted arrays, insertion sort runs in linear time: Number of exchanges equals the number of inversions.
 - Roughly twice as fast as selection sort in practice; Efficient method of sorting partially sorted arrays.
 
@@ -57,7 +57,7 @@ Implement `compareTo()` so that `v.compareTo(w)`:
 - Increment sequence: 3*x* + 1 => [1, 4, 13, 40, 121, 364].
 
 ### Performance
-- The worst-case number of compares used by shellsort with the 3*x*+1 increments is O(*N*^3/2^).
+- The worst-case number of compares used by shellsort with the 3*x*+1 increments is O(*N*<sup>3/2</sup>).
 - Number of compares used by shellsort with the 3*x*+1 increments is at most by a small multiple of *N* times the # of increments used. 
 
 - Simple idea leading to substantial performance gains.
