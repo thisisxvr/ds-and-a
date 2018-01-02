@@ -9,11 +9,11 @@
 - Merge the resulting ordered subarrays.
   - Recursive calls break sub-arrays into smaller sub-arrays until they are N = 2.
 
-## Performance
+### Performance
 - Time: At most *N* lg *N* compares and 6 *N* lg *N* array accesses to sort any array of size *N*.
 - Space: Extra space proportional to *N*.
 
-## Practical Improvements
+### Practical Improvements
 - Use insertion sort for small subarrays:
   - Mergesort has too much overhead for tiny subarrays.
   - Cutoff to insertion sort for ≈ 7 items.
@@ -31,7 +31,7 @@
 
 ---
 
-# Complexity
+## Complexity
 - Computational complexity: Framework to study efficiency of algorithms for solving a particular problem X.
 - Model of computation: Allowable operations.
 - Cost model: Operation count(s).
@@ -43,5 +43,14 @@
 - Any compare-based sorting algorithm must use at least lg ( *N* ! ) ~ *N* lg *N* compares in the worst-case.
 - Optimal algorithm = Mergesort.
   - With respect to number of compares (time). **Not** optimal with respect to space.
+
+## Rules of the Game Addendum: Stability
+- A stable sort preserves the relative order of items with equal keys.
+- Which sorts are stable? — Insertion sort and mergesort (but not selection sort or shellsort).
+  - Even then, need to carefully check code ("less than" vs. "less than or equal to").
+- As long as equal items never move past each other (e.g. in insertion sort), the sort is stable.
+- Sort that aren't stable typically involve some long-distance exchange that might move an item past some equal item (e.g. selection sort, shellsort).
+
+---
 
 ### Assignment: [Collinear Points](collinear-points/)

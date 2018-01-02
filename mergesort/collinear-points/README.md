@@ -4,12 +4,12 @@ Write a program to recognize line patterns in a given set of points.
 
 Computer vision involves analyzing patterns in visual images and reconstructing the real-world objects that produced them. The process is often broken up into two phases: *feature detection* and *pattern recognition*. Feature detection involves selecting important features of the image; pattern recognition involves discovering patterns in the features. We will investigate a particularly clean pattern recognition problem involving points and line segments. This kind of pattern recognition arises in many other applications such as statistical data analysis.
 
-## The problem
+## The Problem
 Given a set of *n* distinct points in the plane, find every (maximal) line segment that connects a subset of 4 or more of the points.
 
 <img alt="" src="./img/lines2.png">
 
-## Point data type
+## Point Data Type
 Create an immutable data type `Point` that represents a point in the plane by implementing the following API:
 
 ```java
@@ -35,7 +35,7 @@ The `slopeTo()` method should return the slope between the invoking point (x<sub
 ### Corner cases
 To avoid potential complications with integer overflow or floating-point precision, you may assume that the constructor arguments `x` and `y` are each between 0 and 32,767.
 
-## Line segment data type
+## Line Segment Data Type
 To represent line segments in the plane, use the data type `LineSegment.java`, which has the following API:
 
 ```java
@@ -46,7 +46,7 @@ public class LineSegment {
 }
 ```
 
-## Brute force
+## Brute Force
 Write a program `BruteCollinearPoints.java` that examines 4 points at a time and checks whether they all lie on the same line segment, returning all such line segments. To check whether the 4 points *p*, *q*, *r*, and *s* are collinear, check whether the three slopes between *p* and *q*, between *p* and *r*, and between *p* and *s* are all equal.
 
 ```java
@@ -65,7 +65,8 @@ Throw a `java.lang.IllegalArgumentException` if the argument to the constructor 
 ### Performance requirement
 The order of growth of the running time of your program should be *n*<sup>4</sup> in the worst case and it should use space proportional to *n* plus the number of line segments returned.
 
-A faster, sorting-based solution. Remarkably, it is possible to solve the problem much faster than the brute-force solution described above. Given a point *p*, the following method determines whether *p* participates in a set of 4 or more collinear points.
+## A Faster, Sorting-Based Solution
+Remarkably, it is possible to solve the problem much faster than the brute-force solution described above. Given a point *p*, the following method determines whether *p* participates in a set of 4 or more collinear points.
 
 - Think of *p* as the origin.
 - For each other point *q*, determine the slope it makes with *p*.
@@ -94,7 +95,7 @@ Throw a `java.lang.IllegalArgumentException` if the argument to the constructor 
 ### Performance requirement
 The order of growth of the running time of your program should be *n*<sup>2</sup> log *n* in the worst case and it should use space proportional to *n* plus the number of line segments returned. `FastCollinearPoints` should work properly even if the input has 5 or more collinear points.
 
-## Sample client
+## Sample Client
 This client program takes the name of an input file as a command-line argument; read the input file (in the format specified below); prints to standard output the line segments that your program discovers, one per line; and draws to standard draw the line segments.
 
 ```java
