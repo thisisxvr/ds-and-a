@@ -13,7 +13,7 @@ namespace Mergesort {
       // Right half exhausted; move element from left half.
       else if (j > hi)          { arr[k] = aux[i++] }
       // Left element smaller than right element; move element from left.
-      else if (aux[i] <= aux[j]) { arr[k] = aux[i++] }
+      else if (aux[i] < aux[j]) { arr[k] = aux[i++] }
       // Left element greater or equal to right element, move element from right.
       else                      { arr[k] = aux[j++] }
     }

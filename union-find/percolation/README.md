@@ -120,5 +120,4 @@ Deliverables. Submit only Percolation.java (using the weighted quick-union algor
 For fun. Create your own percolation input file and share it in the discussion forums. For some inspiration, do an image search for "nonogram puzzles solved."
 
 ---
-**This assignment was developed by Bob Sedgewick and Kevin Wayne. 
-Copyright © 2008.**
+**This assignment was developed by Bob Sedgewick and Kevin Wayne. Copyright © 2008.**

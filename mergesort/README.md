@@ -28,3 +28,20 @@
 
 - Simple and non-recursive version of mergesort.
   - But about 10% slower than top-down on typical systems.
+
+---
+
+# Complexity
+- Computational complexity: Framework to study efficiency of algorithms for solving a particular problem X.
+- Model of computation: Allowable operations.
+- Cost model: Operation count(s).
+- Upper bound: Cost guarantee provided by *some* algorithm for X.
+- Lower bound: Proven limit on cost guarantee of *all* algorithms for X.
+- Optimal algorithm. Algorithm with best possible cost guarantee for X.
+
+### Sorting
+- Any compare-based sorting algorithm must use at least lg ( *N* ! ) ~ *N* lg *N* compares in the worst-case.
+- Optimal algorithm = Mergesort.
+  - With respect to number of compares (time). **Not** optimal with respect to space.
+
+### Assignment: [Collinear Points](collinear-points/)
