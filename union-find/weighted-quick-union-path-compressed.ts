@@ -1,4 +1,4 @@
-export default class WeightedQuickUnionPathCompressed {
+class WeightedQuickUnionPathCompressed {
   private _id: number[]
   private _sz: number[] // Maintains a count of the number of objects rooted in a tree
 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Percolation Visualizer</title>
+  <style>
+    body, html {
+      height: 100%;
+      display: grid;
+    }
+    canvas {
+      transform: rotate(90deg);
+      /* transform: scaleX(-1);  */
+    }
+    #file-input, #cnvs { margin: auto; }
+  </style>
+</head>
+
+<body>
+  <input type="file" id="file-input" />
+  <canvas id="cnvs" width="500" height="500"></canvas>
+
+  <script src="percolation.js"></script>
+  <script type="text/javascript">
+    const options = {
+      fullColor: "#67c6f3",
+      openColor: '#FFFFFF',
+      strokeColor: '#000000'
+    }
+
+    const cnvs = document.getElementById('cnvs')
+    const ctx = cnvs.getContext('2d')
+    ctx.fillStyle = options.strokeColor
+    ctx.fillRect(0, 0, cnvs.width, cnvs.width) // bg
+
+    let system, gridSize, siteSize, systemInputs
+
+    function initialize(fileContents) {
+      // Parse file contents and get grid size
+      const input = fileContents.trim().split('\n')
+      gridSize = Number(input.shift())
+      siteSize = Math.floor(cnvs.width / gridSize)
+
+      // Parse the rest of the lines for input, store in array
+      systemInputs = []
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < input.length; i++) {
+        const x = input[i].trim().replace( /\s+/g, ' ') // Get rid of whitespace.
+        systemInputs.push(x.split(' '))
+      }
+
+      // Initialize a new system.
+      system = new Percolation(gridSize)
+      draw()
+
+      update()
+      draw()
+    }
+
+    let count = 0, timer
+    function update() {
+      const [row, column] = systemInputs[count++]
+      system.open(row, column)
+      timer = setTimeout(update, 300)
+      if(count >= systemInputs.length) { clearTimeout(timer) }
+    }
+
+    function draw() {
+      for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+          const x = i * siteSize
+          const y = j * siteSize
+
+          if (system.isFull(i + 1, j + 1)) { ctx.fillStyle = options.fullColor } // Blue for full site
+          else if (system.isOpen(i + 1, j + 1)) { ctx.fillStyle = options.openColor } // White for open site
+          else { ctx.fillStyle = options.strokeColor } // Black for a blocked site
+
+          ctx.fillRect(x, y, siteSize, siteSize)
+          ctx.strokeRect(x, y, siteSize, siteSize)
+        }
+      }
+      requestAnimationFrame(() => { draw() })
+    }
+
+    const readFile = (e) => {
+      let file = e.target.files[0]
+      if (!file) { return }
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        const contents = e.target.result
+        initialize(contents)
+      }
+      reader.readAsText(file)
+    }
+
+    document.getElementById('file-input').addEventListener('change', readFile, false)
+  </script>
+</body>
+</html>

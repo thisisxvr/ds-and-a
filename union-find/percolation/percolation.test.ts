@@ -1,4 +1,4 @@
-import { Percolation, ISite } from './percolation'
+// import { Percolation, ISite } from './percolation'
 
 xdescribe('A Percolation system', () => {
   let system: Percolation

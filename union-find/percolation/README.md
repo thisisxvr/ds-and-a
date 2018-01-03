@@ -1,9 +1,9 @@
-This is my solution to the first assignment of the course. I've implemented *percolation*, *percolation-stats*, and parts of *percolation-visualizer*, with extensive tests for all. The solution to this problem lies in a clever trick — introducing a 'virtual' top and bottom site, with connections to the top and bottom. The system percolates iff the virtual top site is connected to the virtual bottom site.
+This is my solution to the first assignment of the course. I've implemented *percolation*, *percolation-stats*, and the visualizer in *visualizer.html*. The solution to this problem lies in introducing a 'virtual' top and bottom site, with connections to the top and bottom. The system percolates if the virtual top site is connected to the virtual bottom site.
 
-## TODO
-For the visualizer, I've tried to port over the Java code to an HTML Canvas – Node.js; Client – Server architecture. It's partially complete; I'll get back to it another time.
-
-Below is the assignment brief.
+### Installation
+- Run `tsc percolation.ts --out percolation.js` to compile the files.
+- `open visualizer.html` to view it in the browser.
+- Use the file picker to open one of the input files in `test-data`.
 
 ---
 

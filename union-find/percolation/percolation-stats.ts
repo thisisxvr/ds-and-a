@@ -1,7 +1,6 @@
-import { Percolation } from './percolation'
 import createDebug from 'debug'
 
-export default class PercolationStats {
+class PercolationStats {
   debug = createDebug('Stats: ')
   private _openSites: number[]
   private _gridSize: number

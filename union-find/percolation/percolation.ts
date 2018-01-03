@@ -1,15 +1,13 @@
-import UnionFind from '../weighted-quick-union-path-compressed'
-
-export interface ISite {
+interface ISite {
   index: number
   isOpen: boolean
 }
 
-export class Percolation {
+class Percolation {
   private _gridSize: number
   private _virtualTop: number
   private _virtualBtm: number
-  private _sites: UnionFind
+  private _sites: WeightedQuickUnionPathCompressed
   private _grid: ISite[][]
   get grid() { return this._grid }
   get sites() { return this._sites }
@@ -32,7 +30,7 @@ export class Percolation {
     }
 
     // Intialize the algorithm with N^2 objects plus two for the virtual sites
-    this._sites = new UnionFind((n ** 2) + 2)
+    this._sites = new WeightedQuickUnionPathCompressed((n ** 2) + 2)
 
     // Arbitrarily set virtual top site to be the last element
     // and virtual bottom to be second to last
@@ -98,7 +96,6 @@ export class Percolation {
     return this._sites.connected(this._virtualTop, this._virtualBtm)
   }
 
-  // TODO: make async
   // Connect a site to it's open neighbours
   private meetTheNeighbours(row: number, column: number): void {
     const siteRow = row - 1

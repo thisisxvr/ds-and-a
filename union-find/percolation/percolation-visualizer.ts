@@ -1,4 +1,8 @@
-import { Percolation } from './percolation'
+/**
+ * Made for testing; this file is not in use.
+ */
+
+/// <reference path="percolation.ts" />
 import * as createDebug from 'debug'
 import * as http from 'http'
 import * as path from 'path'
@@ -79,20 +83,21 @@ function getInputFiles(): string[] {
   return fileNames
 }
 
-function initSystem(fileName: string): number[][] {
+function initSystem(fileContents: string): number[][] {
   // Get file from disk
-  let fileContents: string
-  try { fileContents = fs.readFileSync(path.resolve(__dirname, `test-data/${fileName}.txt`), 'utf-8') }
-    catch (err) { throw new Error(`File read error: ${err}`) }
+  // let fileContents: string
+  // try { fileContents = fs.readFileSync(path.resolve(__dirname, `test-data/${fileName}.txt`), 'utf-8') }
+  //   catch (err) { throw new Error(`File read error: ${err}`) }
 
   // Parse file contents and get grid size
   const input = fileContents!.trim().split('\n')
-  const gridSize = Number(input[0])
+  const gridSize = Number(input.shift())
 
   // Parse the rest of the lines for input, store in array
   systemInputs = []
   systemInputs.push([gridSize, 0])
-  for (let i = 1; i < input.length; i++) {
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < input.length; i++) {
     systemInputs.push(input[i].trim().split(' ').map((n) => Number(n)))
   }
 
@@ -104,18 +109,3 @@ function initSystem(fileName: string): number[][] {
 function openSite(row: number, column: number) {
   system.open(row, column)
 }
-
-    // let opened = 0
-    // for (let row = 1; row <= gridSize; row++) {
-    //   for (let column = 0; column <= gridSize; column++) {
-    //     if (system.isFull(row, column)) {
-    //       // draw full
-    //       opened++
-    //     } else if (system.isOpen(row, column)) {
-    //       // draw open
-    //       opened++
-    //     } else {
-    //       // draw blank
-    //     }
-    //   }
-    // }
