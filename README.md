@@ -14,6 +14,7 @@ Currently a Work-in-Progress.
 - [Stacks and Queues](stacks-and-queues/): Stacks (linked list + array), queues (linked list + array), deques, and randomized queues.
 - [Elementary Sorts](elementary-sorts/): Selection sort, Insertion sort, Shellsort, and Knuth shuffle.
 - [Mergesort](mergesort/): Mergesort (top-down + bottom-up).
+- [Quicksort](quicksort/): Quicksort, quick-select, 3-way quicksort.
 
 ## Literature
 - [Big-O Cheat Sheet](http://bigocheatsheet.com/)

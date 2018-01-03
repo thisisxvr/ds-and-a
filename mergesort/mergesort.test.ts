@@ -2,7 +2,7 @@ import Mergesort from './mergesort'
 import ms = Mergesort.mergesort
 import msBU = Mergesort.mergesortBU
 
-describe('Mergesort', () => {
+xdescribe('Mergesort', () => {
 
   it('sorts stuff in NlogN time', () => {
     expect(ms(['S', 'O', 'R', 'T', 'E', 'X', 'A', 'M', 'P', 'L', 'E'])).toEqual(["A", "E", "E", "L", "M", "O", "P", "R", "S", "T", "X"])

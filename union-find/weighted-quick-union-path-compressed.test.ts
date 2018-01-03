@@ -1,4 +1,4 @@
-import WeightedQuickUnionPathCompressed from './weighted-quick-union-path-compressed'
+// import WeightedQuickUnionPathCompressed from './weighted-quick-union-path-compressed'
 
 xdescribe('A Weighted Quick Union algorithm with Path Compression', () => {
   let wqupc: WeightedQuickUnionPathCompressed
