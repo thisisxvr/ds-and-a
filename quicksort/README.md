@@ -65,12 +65,12 @@ Goal: Partition array into 3 parts so that:
   - No larger entries to left of `lt`.
   - No smaller entries to right of `gt`.
 
-#### Dijkstra's 3-Way Quicksort Variant
+### Dijkstra's 3-Way Quicksort Variant
 - Let `v` be partitioning item `a[lo]`.
 - Scan `i` from left to right.
-  – (`a[i]` < `v`):  exchange `a[lt]` with `a[i]`; increment both `lt` and `i`
-  – (`a[i]` > `v`):  exchange `a[gt]` with `a[i]`; decrement `gt`
-  – (`a[i]` == `v`): increment `i`
+  - (`a[i]` < `v`):  exchange `a[lt]` with `a[i]`; increment both `lt` and `i`.
+  - (`a[i]` > `v`):  exchange `a[gt]` with `a[i]`; decrement `gt`.
+  - (`a[i]` == `v`): increment `i`.
 
 ### Performance
 Randomized quicksort with 3-way partitioning reduces running time from linearithmic to **linear** in broad class of applications.

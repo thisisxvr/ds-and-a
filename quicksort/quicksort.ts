@@ -25,6 +25,7 @@ namespace Quick {
     if (typeof(lo) === 'undefined' || typeof(hi) === 'undefined') {
       const a = ElementarySorts.knuthShuffle(array)
       sort(a, 0, a.length - 1)
+      return a
     }
 
     if (hi! <= lo!) { return array }
@@ -49,14 +50,14 @@ namespace Quick {
     return array[k]
   }
 
-  export function threeWaySort<type>(array: type[], lo: number, hi: number): type[] {
+  export function threeWaySort<type>(array: type[], lo = 0, hi = array.length - 1): type[] {
     if (hi <= lo) { return array }
-    const v = array[lo]
     let lt = lo, gt = hi, i = lo
+    const v = array[lo]
 
     while (i <= gt) {
-      if      (array[i] < v) [array[lt], array[i]] = [array[i++], array[lt++]]
-      else if (array[i] > v) [array[gt], array[i]] = [array[i],   array[gt--]]
+      if      (array[i] < v)  [array[lt++], array[i++]] = [array[i], array[lt]]
+      else if (array[i] > v)  [array[gt--], array[i]]   = [array[i], array[gt]]
       else i++
     }
 

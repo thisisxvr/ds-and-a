@@ -10,10 +10,23 @@ describe('Quick', () => {
   })
 
   it('select can select stuff', () => {
-    //
+    const testInput = 'QUICKEXAMPLE'.split('')
+
+    // Min (k = 0)
+    expect(Quick.select(testInput, 0)).toBe('A')
+
+    // Median (k = N / 2)
+    expect(Quick.select(testInput, testInput.length / 2)).toBe('L')
+
+    // Max (k = N - 1)
+    expect(Quick.select(testInput, testInput.length - 1)).toBe('X')
   })
 
   it('sort has a 3-way variant optimized for duplicate keys', () => {
-    //
+    expect(Quick.threeWaySort(['S', 'O', 'R', 'T', 'E', 'X', 'A', 'M', 'P', 'L', 'E'])).toEqual(["A", "E", "E", "L", "M", "O", "P", "R", "S", "T", "X"])
+
+    const testInput = 'RBWWRWBRRWBR'.split('')
+
+    expect(Quick.threeWaySort(testInput)).toEqual('BBBRRRRRWWWW'.split(''))
   })
 })
