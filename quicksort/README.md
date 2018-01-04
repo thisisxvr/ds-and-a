@@ -83,9 +83,9 @@ Basic algorithm = quicksort.
 - Cutoff to insertion sort for small subarrays.
 - Partitioning scheme: Bentley-McIlroy 3-way partitioning.
 - Partitioning item:
-  – small arrays: middle entry
-  – medium arrays: median of 3
-  – large arrays: Tukey's ninther (Median of the median of 3 samples, each of 3 entries.)
+  - small arrays: middle entry
+  - medium arrays: median of 3
+  - large arrays: Tukey's ninther (Median of the median of 3 samples, each of 3 entries.)
 
 ## Summary
 Algorithm | Inplace | Stable | Worst | Average | Best | Remarks
