@@ -79,5 +79,29 @@ Ordered array | N | 1 | 1
 **Binary heap** | log N | log N | 1
 
 # Heapsort
+Basic idea:
+- First pass: Create max-heap with all N keys (using bottom-up method).
+- Second pass: Sortdown: Repeatedly remove the maximum key.
+  - Leave in array, instead of nulling out.
 
+### Performance
+- Heap construction uses ≤ 2 *N* compares and exchanges.
+- Heapsort uses ≤ 2 *N* lg *N* compares and exchanges.
+  - In-place sorting algorithm with *N* log *N* worst-case.
 
+Heapsort is optimal for both time and space, but:
+- Inner loop longer than quicksort’s.
+- Makes poor use of cache memory.
+- Not stable.
+
+## Summary
+Algorithm | Inplace | Stable | Worst | Average | Best | Remarks
+--- | --- | --- | --- | --- | --- | ---
+Selection | ✔ | | N<sup>2</sup> / 2 | N<sup>2</sup> / 2 | N<sup>2</sup> / 2 | *N* exchanges
+Insertion | ✔ | ✔ | N<sup>2</sup> / 2 | N<sup>2</sup> / 4 | N | Use for small *N* or partially ordered
+Shell | ✔ | | ? | ? | N | Tight code, subquadratic
+Quick | ✔ | | N<sup>2</sup> / 2 | 2 N ln N | N lg N | *N* log *N* probabilistic guarantee; fastest in practice
+3-Way Quick | ✔ | | N<sup>2</sup> / 2 | 2 N ln N | N | Improves quicksort in presence of duplicate keys
+Merge | | ✔ | N lg N | N lg N | N lg N | *N* log *N* guarantee, stable
+Heap | ✔ |  | 2 N lg N | 2 N lg N | N lg N | *N* log *N* guarantee, in-place
+??? | ✔ | ✔ | N lg N | N lg N | N | Holy sorting grail
