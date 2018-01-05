@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css"> 
+    canvas { border: 2px solid black; }
+    body, html {
+      height: 100%;
+      display: grid;
+    }
+    #file-input, #collinear-graph { margin: auto; }
+  </style>
+  <title>Collinear Points</title>
+</head>
+<body>
+  <input type="file" id="file-input" />
+  <pre id="file-content"></pre>
+  <canvas id='collinear-graph' width="800" height="800"></canvas>
+</body>
+<script src="./client.js"></script>
+<script>
+  const readFile = (e) => {
+    let file = e.target.files[0]
+    if (!file) { return }
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      // Clear the canvas of previous plots
+      const canvas = document.getElementById('collinear-graph')
+      const ctx = canvas.getContext('2d')
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      // const contents = e.target.result;
+      // const fcp = new FastCollinearPoints(contents);
+      // fcp.fast();
+      const contents = e.target.result
+      init(contents)
+    }
+    reader.readAsText(file)
+  }
+
+  document.getElementById('file-input').addEventListener('change', readFile, false);
+</script>
+</html>
