@@ -1,6 +1,6 @@
 import { BinaryHeapPQ } from "./pq-binary-heap"
 
-describe('A Priority Queue using a Binary Heap', () => {
+xdescribe('A Priority Queue using a Binary Heap', () => {
   const bh = new BinaryHeapPQ<string>()
 
   it('stores items using a heap', () => {

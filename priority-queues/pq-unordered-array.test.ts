@@ -1,6 +1,6 @@
 import UnorderedMaxPQ from './pq-unordered-array'
 
-describe('An unordered Priority Queue (max)', () => {
+xdescribe('An unordered Priority Queue (max)', () => {
   const pq = new UnorderedMaxPQ<number>(10)
 
   it('returns the highest element', () => {

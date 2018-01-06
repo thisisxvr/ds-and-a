@@ -105,3 +105,7 @@ Quick | ✔ | | N<sup>2</sup> / 2 | 2 N ln N | N lg N | *N* log *N* probabilisti
 Merge | | ✔ | N lg N | N lg N | N lg N | *N* log *N* guarantee, stable
 Heap | ✔ |  | 2 N lg N | 2 N lg N | N lg N | *N* log *N* guarantee, in-place
 ??? | ✔ | ✔ | N lg N | N lg N | N | Holy sorting grail
+
+---
+
+### Assignment: [8 Puzzle](8-puzzle/)

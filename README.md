@@ -4,7 +4,7 @@
 > *Great algorithms are the poetry of computation* — Francis Sullivan
 
 
-TypeScript implementations of the Algorithms and Data Structures taught in [Algorithms](https://www.coursera.org/learn/algorithms-part1/), by Robert Sedgewick and Kevin Wayne of Princeton University.
+TypeScript implementations of the Algorithms and Data Structures taught in [Algorithms](https://algs4.cs.princeton.edu/home/), by Robert Sedgewick and Kevin Wayne of Princeton University.
 
 
 Currently a Work-in-Progress.

@@ -1,4 +1,4 @@
-// import ElementarySorts from "./elementary-sorts"
+import ElementarySorts from "./elementary-sorts"
 
 xdescribe('Algorithms that sort data are', () => {
   const selection = ElementarySorts.selection
