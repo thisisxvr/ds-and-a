@@ -1,7 +1,7 @@
-import { UnorderedST } from "./st-unordered"
+import { OrderedST } from "./st-ordered"
 
-xdescribe('An Unordered Symbol Table uses a Linked List to', () => {
-  const st = new UnorderedST<string, number>()
+describe('An Ordered Symbol Table uses a Binary Search to', () => {
+  const st = new OrderedST<string, number>()
 
   it('put values', () => {
     st.put('to', 1)

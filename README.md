@@ -4,7 +4,7 @@
 > *Great algorithms are the poetry of computation* — Francis Sullivan
 
 
-TypeScript implementations of the Algorithms and Data Structures taught in [Algorithms](https://algs4.cs.princeton.edu/home/), by Robert Sedgewick and Kevin Wayne of Princeton University.
+TypeScript implementations of the Algorithms and Data Structures taught in [Algorithms, 4th Edition](https://algs4.cs.princeton.edu/home/), by Robert Sedgewick and Kevin Wayne of Princeton University.
 
 
 Currently a Work-in-Progress.
@@ -24,7 +24,7 @@ Currently a Work-in-Progress.
 - [A Gentle Introduction to Algorithm Complexity Analysis](http://discrete.gr/complexity/)
 
 ## Credits
-All assignments, test data, sample code, and slides are the copyright of Robert Sedgewick and Kevin Wayne of Princeton University.
+All assignments, test data, sample code, and slides are the copyright of Robert Sedgewick and Kevin Wayne.
 
 ## License
 MIT

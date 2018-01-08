@@ -1,6 +1,6 @@
 
-// Symbol table that uses a linked list to maintain an unordered array of key, value pairs.
-export class STUnordered<Key, Value> {
+// Symbol table that uses a linked list to maintain an unordered array of key-value pairs.
+export class UnorderedST<Key, Value> {
   private first: INode<Key, Value>
   private n: number
   private pointer = this.first
